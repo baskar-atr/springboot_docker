@@ -4,6 +4,8 @@ EXPOSE 8080
 
 RUN mkdir /app
 
-COPY build/libs/*.jar /app/spring-boot-application.jar
+RUN cd /app
+
+COPY build/libs/springbootdocker-0.0.1-SNAPSHOT.jar /app/spring-boot-application.jar
 
 ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-Djava.security.egd=file:/dev/./urandom","-jar","/app/spring-boot-application.jar"]
